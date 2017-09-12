@@ -19,7 +19,6 @@ namespace WebmLoader
         {
             if (linkBox.TextLength != 0)
             {
-                int count = 0;
                 string remoteUrl = linkBox.Text;
                 WebClient myWebClient = new WebClient();
                 myWebClient.DownloadFile(remoteUrl, "links.txt");
@@ -32,25 +31,18 @@ namespace WebmLoader
                 {
                     urls.Add("https://2ch.hk" + match.Value);
                     match = match.NextMatch();
-                    count++;
                 }
 
+                progressBar1.Maximum = urls.Count;
                 foreach (string a in urls)
                 {
                     using (WebClient wc = new WebClient())
                     {
-                        //wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                         wc.DownloadFileCompleted += wc_DownloadFileCompleted;
                         wc.DownloadFileAsync(new Uri(a), @"done\" + a.Split('/').Last());
                     }
                 }
             }
-        }
-        private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            // In case you don't have a progressBar Log the value instead 
-            // Console.WriteLine(e.ProgressPercentage);
-            progressBar1.Value++;
         }
 
         private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
