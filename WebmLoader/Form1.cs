@@ -19,12 +19,10 @@ namespace WebmLoader
         {
             if (linkBox.TextLength != 0)
             {
-                statusLabel.Text = "Loading";
                 int count = 0;
                 string remoteUrl = linkBox.Text;
                 WebClient myWebClient = new WebClient();
                 myWebClient.DownloadFile(remoteUrl, "links.txt");
-                statusLabel.Text = "Done!";
                 string text = System.IO.File.ReadAllText(path: "links.txt");
                 string pattern = @"\/\w+\/\w+\/\w+\/\d+\.(webm|mp4)";
                 Regex regex = new Regex(pattern);
@@ -36,13 +34,12 @@ namespace WebmLoader
                     match = match.NextMatch();
                     count++;
                 }
-                progressBar1.Maximum = urls.Count;
-                labelCount.Text = urls.Count.ToString();
+
                 foreach (string a in urls)
                 {
                     using (WebClient wc = new WebClient())
                     {
-                        wc.DownloadProgressChanged += wc_DownloadProgressChanged;
+                        //wc.DownloadProgressChanged += wc_DownloadProgressChanged;
                         wc.DownloadFileCompleted += wc_DownloadFileCompleted;
                         wc.DownloadFileAsync(new Uri(a), @"done\" + a.Split('/').Last());
                     }
@@ -53,13 +50,12 @@ namespace WebmLoader
         {
             // In case you don't have a progressBar Log the value instead 
             // Console.WriteLine(e.ProgressPercentage);
-            progressBar1.Value = e.ProgressPercentage;
+            progressBar1.Value++;
         }
 
         private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            progressBar1.Value = 0;
-
+            progressBar1.Value++;
             if (e.Cancelled)
             {
                 MessageBox.Show("The download has been cancelled");
@@ -69,7 +65,6 @@ namespace WebmLoader
             if (e.Error != null) // We have an error! Retry a few times, then abort.
             {
                 MessageBox.Show("An error ocurred while trying to download file");
-
                 return;
             }
         }

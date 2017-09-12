@@ -30,9 +30,7 @@
         {
             this.linkBox = new System.Windows.Forms.TextBox();
             this.downloadButton = new System.Windows.Forms.Button();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.labelCount = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // linkBox
@@ -44,47 +42,27 @@
             // 
             // downloadButton
             // 
-            this.downloadButton.Location = new System.Drawing.Point(339, 9);
+            this.downloadButton.Location = new System.Drawing.Point(339, 12);
             this.downloadButton.Name = "downloadButton";
-            this.downloadButton.Size = new System.Drawing.Size(75, 23);
+            this.downloadButton.Size = new System.Drawing.Size(75, 20);
             this.downloadButton.TabIndex = 1;
             this.downloadButton.Text = "Download";
             this.downloadButton.UseVisualStyleBackColor = true;
             this.downloadButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(12, 64);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(94, 13);
-            this.statusLabel.TabIndex = 3;
-            this.statusLabel.Text = "Вставьте ссылку";
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(15, 121);
+            this.progressBar1.Location = new System.Drawing.Point(12, 51);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(399, 23);
+            this.progressBar1.Size = new System.Drawing.Size(402, 23);
             this.progressBar1.TabIndex = 4;
-            // 
-            // labelCount
-            // 
-            this.labelCount.AutoSize = true;
-            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCount.Location = new System.Drawing.Point(339, 63);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(0, 16);
-            this.labelCount.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 162);
-            this.Controls.Add(this.labelCount);
+            this.ClientSize = new System.Drawing.Size(426, 95);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.downloadButton);
             this.Controls.Add(this.linkBox);
             this.Name = "Form1";
@@ -98,9 +76,7 @@
 
         private System.Windows.Forms.TextBox linkBox;
         private System.Windows.Forms.Button downloadButton;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label labelCount;
     }
 }
 
